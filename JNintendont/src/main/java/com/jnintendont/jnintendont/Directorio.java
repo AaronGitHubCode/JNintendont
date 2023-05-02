@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class Directorio extends Logs{
     private final String PATH;
     
-    private float porcentaje = 0F;
+    private double porcentaje = 0D;
     
     public Directorio(String path) {
         super(path);
@@ -27,10 +27,15 @@ public class Directorio extends Logs{
         if(directorio.isDirectory()) {
             for(String s : directorio.list()) {
                 if(s.split(Pattern.quote("."))[s.split(Pattern.quote(".")).length  - 1].equals("iso")) {
-                    File nuevoDirectorio = new File(path + "/" + s.split(Pattern.quote("."))[0]);
-                    File gameIso = new File(path + "/" + s);
-                    nuevoDirectorio.mkdir();
-                    gameIso.renameTo(new File(nuevoDirectorio + "/game.iso"));
+                    try {
+                        File nuevoDirectorio = new File(path + "/" + s.split(Pattern.quote("."))[0]);
+                        File gameIso = new File(path + "/" + s);
+                        nuevoDirectorio.mkdir();
+                        gameIso.renameTo(new File(nuevoDirectorio + "/game.iso"));
+                        porcentaje += (100 / directorio.list().length);
+                    }catch(Exception e) {
+                        System.err.println("Error: " + e);
+                    }
                 }
             }
             
@@ -44,11 +49,11 @@ public class Directorio extends Logs{
         }
     }
     
-    public float getPorcentaje() {
+    public double getPorcentaje() {
         return this.porcentaje;
     }
     
-    public void setPorcentaje(float porcentaje) {
+    public void setPorcentaje(double porcentaje) {
         this.porcentaje = porcentaje;
     }
 }

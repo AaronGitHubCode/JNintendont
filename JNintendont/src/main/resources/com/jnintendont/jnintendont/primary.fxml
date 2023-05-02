@@ -13,9 +13,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="640.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jnintendont.jnintendont.PrimaryController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a9a9a" height="125.0" layoutX="-7.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="651.0" />
-      <Text layoutX="14.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JNintendont">
+      <Text fx:id="logo" layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JNintendont" wrappingWidth="188.5615234375">
          <font>
-            <Font name="Corbel Light" size="45.0" />
+            <Font name="Marlett" size="32.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="604.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="v0.1" />

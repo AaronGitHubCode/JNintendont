@@ -22,15 +22,18 @@ import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
-public class PrimaryController implements Initializable {
-    private Logs logs = new Logs();
-    
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.text.Text;
+
+public class PrimaryController implements Initializable { 
     @FXML
     private TextField directorio;
     @FXML
     private TextArea consola;
     @FXML
     private ProgressBar porcentaje;
+    @FXML
+    private Text logo;
 
     /**
      * Initializes the controller class.
@@ -38,6 +41,10 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        logo.setOnMouseDragged(e -> {
+            logo.setX(e.getX());
+            logo.setY(e.getY());
+        });
     }    
 
     @FXML
@@ -85,7 +92,8 @@ public class PrimaryController implements Initializable {
         File verDirectorio = new File(directorio.getText());
         
         if(verDirectorio.isDirectory()) {
-            
+            Directorio directorio = new Directorio(verDirectorio.getAbsolutePath());
+            porcentaje.setProgress(directorio.getPorcentaje());
         }else {
             consola.setText("\nEl directorio " + directorio.getText().split(Pattern.quote("/"))[directorio.getText().split(Pattern.quote("/")).length - 1] + " no existe");
         }
